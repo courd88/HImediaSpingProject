@@ -8,6 +8,7 @@ import spring.MemberDao;
 import spring.MemberListPrinter;
 import spring.MemberPrinter;
 import spring.MemberRegisterService;
+import spring.MemberInfoPrinter;
 
 //스프링 설정 클래스를 의미
 @Configuration
@@ -41,6 +42,15 @@ public class AppCtx {
 	@Bean
 	public MemberListPrinter listPrinter() {
 		return new MemberListPrinter(memberDao(), memberPrinter());
+	}
+	
+	@Bean
+	public MemberInfoPrinter infoPrinter() {
+		MemberInfoPrinter infoPrinter = new MemberInfoPrinter();
+		infoPrinter.setMemberDao(memberDao());
+		infoPrinter.setMemberPrinter(memberPrinter());
+		return infoPrinter;
+		
 	}
 
 

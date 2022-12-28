@@ -1,6 +1,6 @@
 package spring;
 
-public class MemberinfoPrinter {
+public class MemberInfoPrinter {
 	
 	//회원 정보를 조회해서  > MemberDao
 	//출력 기능을 구현 >MemberPrinter
