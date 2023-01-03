@@ -13,12 +13,14 @@ import spring.MemberListPrinter;
 import spring.MemberNotFoundException;
 import spring.MemberRegisterService;
 import spring.RegisterRequest;
+import spring.VersionPrinter;
 import spring.WrongIdPasswordException;
 
 public class MainForSpring {
 	public static ApplicationContext ctx = null;	
 
 	public static void main(String[] args) {
+		//ctx = new AnnotationConfigApplicationContext(AppCtx.class);
 		ctx = new AnnotationConfigApplicationContext(AppCtx.class);
 		
 		Scanner scan = new Scanner(System.in);
@@ -42,9 +44,17 @@ public class MainForSpring {
 			}else if (command.startsWith("info")) {
 				processInfoCommand(command.split(" "));
 				continue;
+			}else if (command.startsWith("Version")) {
+				processVersionCommand();
+				continue;
 			}
 			printHelp();
 		}
+	}
+	
+	private static void processVersionCommand() {
+		VersionPrinter versionPrinter = ctx.getBean("versionPrinter", VersionPrinter.class);
+		versionPrinter.print();
 	}
 	
 	private static void processInfoCommand(String[] args) {
@@ -87,6 +97,7 @@ public class MainForSpring {
 		System.out.println("정상적으로 등록되었습니다.");
 		} catch (DuplicateMemberException e) {
 			System.out.println("이미 존재하는 이메일입니다.");
+			return;
 		}
 	}
 
@@ -115,6 +126,7 @@ public class MainForSpring {
 		System.out.println("change 이메일 현재비번 변경비번");
 		System.out.println("List");
 		System.out.println("info 이메일");
+		System.out.println("version");
 		System.out.println();
 		
 

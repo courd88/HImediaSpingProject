@@ -1,8 +1,11 @@
 package spring;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class ChangePasswordService {
 	
 	//회원 정보 관리 기능을 구현한 MemberDao를 필드로 정의
+	@Autowired
 	private MemberDao memberDao;
 	
 	//setter 메서드를 통해서 의존 객체를 주입

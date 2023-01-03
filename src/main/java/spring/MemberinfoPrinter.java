@@ -1,5 +1,7 @@
 package spring;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class MemberInfoPrinter {
 	
 	//회원 정보를 조회해서  > MemberDao
@@ -10,9 +12,11 @@ public class MemberInfoPrinter {
 	private MemberPrinter printer;
 	
 	//setter 메서드를 통해서 의존객체를 주입
+	@Autowired
 	public void setMemberDao(MemberDao memberDao) {
 		this.memberDao = memberDao;
 	}
+	@Autowired
 	public void setMemberPrinter(MemberPrinter printer) {
 		this.printer = printer;
 	}
